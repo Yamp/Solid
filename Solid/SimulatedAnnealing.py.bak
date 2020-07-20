@@ -4,10 +4,11 @@ from math import exp
 from random import random
 
 
-class SimulatedAnnealing(metaclass=ABCMeta):
+class SimulatedAnnealing:
     """
     Conducts simulated annealing algorithm
     """
+    __metaclass__ = ABCMeta
 
     initial_state = None
     current_state = None

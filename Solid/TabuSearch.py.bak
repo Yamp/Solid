@@ -4,10 +4,11 @@ from collections import deque
 from numpy import argmax
 
 
-class TabuSearch(metaclass=ABCMeta):
+class TabuSearch:
     """
     Conducts tabu search
     """
+    __metaclass__ = ABCMeta
 
     cur_steps = None
 

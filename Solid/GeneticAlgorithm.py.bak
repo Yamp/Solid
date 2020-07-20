@@ -3,10 +3,11 @@ from copy import deepcopy
 from random import randint, random, shuffle
 
 
-class GeneticAlgorithm(metaclass=ABCMeta):
+class GeneticAlgorithm:
     """
     Conducts genetic algorithm
     """
+    __metaclass__ = ABCMeta
 
     population = None
     fitnesses = None

@@ -4,10 +4,11 @@ from math import exp
 from random import random
 
 
-class StochasticHillClimb(metaclass=ABCMeta):
+class StochasticHillClimb:
     """
     Conducts stochastic hill climb
     """
+    __metaclass__ = ABCMeta
 
     initial_state = None
     current_state = None

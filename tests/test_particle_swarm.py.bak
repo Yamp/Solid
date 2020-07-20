@@ -10,5 +10,5 @@ class Algorithm(ParticleSwarm):
 
 
 def test_algorithm():
-    algorithm = Algorithm(50, 5, [0., 0., 0., 0., 0.], [1., 1., 1., 1., 1.], 1., 2., 2., 500, min_objective=None)
+    algorithm = Algorithm(50, 5, [0.,0.,0.,0.,0.], [1.,1.,1.,1.,1.], 1., 2., 2., 500, min_objective=None)
     algorithm.run()

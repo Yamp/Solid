@@ -4,10 +4,11 @@ from numpy import apply_along_axis, argmin, array, copy, diag_indices_from, dot,
 from numpy.random import uniform
 
 
-class ParticleSwarm(metaclass=ABCMeta):
+class ParticleSwarm:
     """
     Conducts particle swarm optimization
     """
+    __metaclass__ = ABCMeta
 
     swarm_size = None
     member_size = None

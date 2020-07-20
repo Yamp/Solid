@@ -1,12 +1,13 @@
 from abc import ABCMeta, abstractmethod
 from copy import deepcopy
-from random import randint, random, shuffle
+from random import random, shuffle
 
 
-class GeneticAlgorithm(metaclass=ABCMeta):
+class EvolutionaryAlgorithm:
     """
-    Conducts genetic algorithm
+    Conducts evolutionary algorithm
     """
+    __metaclass__ = ABCMeta
 
     population = None
     fitnesses = None
@@ -58,7 +59,7 @@ class GeneticAlgorithm(metaclass=ABCMeta):
                 raise ValueError('Maximum fitness must be a numeric type')
 
     def __str__(self):
-        return ('GENETIC ALGORITHM: \n' +
+        return ('EVOLUTIONARY ALGORITHM: \n' +
                 'CURRENT STEPS: %d \n' +
                 'BEST FITNESS: %f \n' +
                 'BEST MEMBER: %s \n\n') % \
@@ -82,8 +83,7 @@ class GeneticAlgorithm(metaclass=ABCMeta):
     @abstractmethod
     def _initial_population(self):
         """
-        Generates initial population -
-        members must be represented by a list of binary-values integers
+        Generates initial population
 
         :return: list of members of population
         """
@@ -105,7 +105,7 @@ class GeneticAlgorithm(metaclass=ABCMeta):
 
         :return: None
         """
-        self.fitnesses = list([self._fitness(x) for x in self.population])
+        self.fitnesses = [self._fitness(x) for x in self.population]
 
     def _most_fit(self):
         """
@@ -146,6 +146,7 @@ class GeneticAlgorithm(metaclass=ABCMeta):
                     break
         return res
 
+    @abstractmethod
     def _crossover(self, parent1, parent2):
         """
         Creates new member of population by combining two parent members
@@ -154,9 +155,9 @@ class GeneticAlgorithm(metaclass=ABCMeta):
         :param parent2: a member
         :return: member made by combining elements of both parents
         """
-        partition = randint(0, len(self.population[0]) - 1)
-        return parent1[0:partition] + parent2[partition:]
+        pass
 
+    @abstractmethod
     def _mutate(self, member):
         """
         Randomly mutates a member
@@ -164,14 +165,11 @@ class GeneticAlgorithm(metaclass=ABCMeta):
         :param member: a member
         :return: mutated member
         """
-        if self.mutation_rate >= random():
-            idx = randint(0, len(member) - 1)
-            member[idx] = 1 if member[idx] == 0 else 1
-        return member
+        pass
 
     def run(self, verbose=True):
         """
-        Conducts genetic algorithm
+        Conducts evolutionary algorithm
 
         :param verbose: indicates whether or not to print progress regularly
         :return: best state and best objective function value

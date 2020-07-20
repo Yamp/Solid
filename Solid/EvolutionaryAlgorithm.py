@@ -3,11 +3,10 @@ from copy import deepcopy
 from random import random, shuffle
 
 
-class EvolutionaryAlgorithm:
+class EvolutionaryAlgorithm(metaclass=ABCMeta):
     """
     Conducts evolutionary algorithm
     """
-    __metaclass__ = ABCMeta
 
     population = None
     fitnesses = None

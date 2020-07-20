@@ -3,10 +3,11 @@ from random import choice, random, uniform
 from numpy import argmax, argmin
 
 
-class HarmonySearch(metaclass=ABCMeta):
+class HarmonySearch:
     """
     Conducts harmony search
     """
+    __metaclass__ = ABCMeta
 
     cur_steps = None
 
